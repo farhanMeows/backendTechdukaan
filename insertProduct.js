@@ -1,52 +1,7 @@
 const mongoose = require("mongoose");
 const { Product } = require("./model/Product");
 
-const categories = [
-  { label: "PC", value: "pc" },
-  { label: "Laptop", value: "laptop" },
-  { label: "Printers", value: "printers" },
-  { label: "Accessories", value: "accessories" },
-];
-
-// Dummy data generator
-const generateDummyProducts = () => {
-  const products = [];
-  for (let i = 1; i <= 20; i++) {
-    const randomCategory =
-      categories[Math.floor(Math.random() * categories.length)];
-    const randomBrand = ["BrandA", "BrandB", "BrandC", "BrandD"][
-      Math.floor(Math.random() * 4)
-    ];
-
-    const product = {
-      title: `Product ${i}`,
-      description: `Description for product ${i}`,
-      price: Math.floor(Math.random() * (10000 - 100 + 1)) + 100, // Price between 100 and 10000
-      discountPercentage: Math.floor(Math.random() * 99) + 1, // Discount between 1 and 99
-      rating: Math.random() * 5, // Rating between 0 and 5
-      stock: Math.floor(Math.random() * 100), // Stock between 0 and 100
-      brand: randomBrand,
-      category: randomCategory.value,
-      thumbnail: `https://dummyimage.com/200x200/000/fff&text=Product+${i}`,
-      images: [
-        `https://dummyimage.com/200x200/000/fff&text=Product+${i}-1`,
-        `https://dummyimage.com/200x200/000/fff&text=Product+${i}-2`,
-      ],
-      colors: ["Red", "Blue", "Green"],
-      sizes: ["S", "M", "L"],
-      highlights: [
-        `Highlight 1 for Product ${i}`,
-        `Highlight 2 for Product ${i}`,
-      ],
-      discountPrice: Math.round(Math.random() * 1000 + 50),
-      deleted: false,
-    };
-
-    products.push(product);
-  }
-  return products;
-};
-
+// Connect to your MongoDB database
 mongoose
   .connect(
     "mongodb+srv://techdukaan26:8pKp6inAaxL0qxWa@cluster0.l72zy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
@@ -55,18 +10,86 @@ mongoose
       useUnifiedTopology: true,
     }
   )
-  .then(async () => {
-    console.log("Connected to MongoDB");
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.log(err));
 
-    const dummyProducts = generateDummyProducts();
+// Function to add dummy products
+const addDummyProducts = async () => {
+  const products = [
+    {
+      title: "Gaming PC Alpha",
+      description:
+        "High-end gaming PC with powerful GPU and CPU for ultra settings.",
+      price: 1500,
+      discountPercentage: 10,
+      rating: 4.8,
+      stock: 50,
+      brand: "AlphaTech",
+      category: "pc",
+      subCategory: "gaming",
+      thumbnail: "https://example.com/images/gaming-pc-alpha-thumbnail.jpg",
+      images: [
+        "https://example.com/images/gaming-pc-alpha-1.jpg",
+        "https://example.com/images/gaming-pc-alpha-2.jpg",
+      ],
+      colors: ["Black", "Red"],
+      sizes: ["Large"],
+      highlights: ["RTX 3080", "Intel i9", "32GB RAM"],
+      discountPrice: 1350,
+    },
+    {
+      title: "Workstation PC Beta",
+      description:
+        "Professional workstation PC for heavy design and rendering tasks.",
+      price: 2000,
+      discountPercentage: 5,
+      rating: 4.5,
+      stock: 30,
+      brand: "BetaWorks",
+      category: "pc",
+      subCategory: "workstation",
+      thumbnail: "https://example.com/images/workstation-pc-beta-thumbnail.jpg",
+      images: [
+        "https://example.com/images/workstation-pc-beta-1.jpg",
+        "https://example.com/images/workstation-pc-beta-2.jpg",
+      ],
+      colors: ["Gray", "Silver"],
+      sizes: ["Medium"],
+      highlights: ["Quadro RTX", "AMD Threadripper", "64GB RAM"],
+      discountPrice: 1900,
+    },
+    {
+      title: "Gaming Laptop Omega",
+      description:
+        "Portable gaming powerhouse with stunning display and fast performance.",
+      price: 1800,
+      discountPercentage: 7,
+      rating: 4.7,
+      stock: 40,
+      brand: "OmegaGear",
+      category: "pc",
+      subCategory: "gaming",
+      thumbnail: "https://example.com/images/gaming-laptop-omega-thumbnail.jpg",
+      images: [
+        "https://example.com/images/gaming-laptop-omega-1.jpg",
+        "https://example.com/images/gaming-laptop-omega-2.jpg",
+      ],
+      colors: ["Black", "Blue"],
+      sizes: ["15.6 inch"],
+      highlights: ["RTX 3070", "Intel i7", "16GB RAM"],
+      discountPrice: 1674,
+    },
+  ];
 
-    try {
-      await Product.insertMany(dummyProducts);
-      console.log("20 dummy products inserted successfully");
-    } catch (error) {
-      console.error("Error inserting dummy products:", error);
-    } finally {
-      mongoose.connection.close();
-    }
-  })
-  .catch((err) => console.error("Connection error:", err));
+  try {
+    const result = await Product.insertMany(products);
+    console.log(`${result.length} products have been added successfully`);
+  } catch (err) {
+    console.log("Error adding products:", err);
+  } finally {
+    mongoose.connection.close();
+  }
+};
+
+// Run the function
+addDummyProducts();

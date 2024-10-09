@@ -139,6 +139,8 @@ passport.use(
             sanitizeUser(user),
             process.env.JWT_SECRET_KEY
           );
+          console.log("token: ", token);
+
           done(null, { id: user.id, role: user.role, token }); // this lines sends to serializer
         }
       );
