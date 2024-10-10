@@ -15,7 +15,7 @@ const { createProduct } = require("./controller/Product");
 const productsRouter = require("./routes/Products");
 const categoriesRouter = require("./routes/Categories");
 const subcategoriesRouter = require("./routes/SubCategory");
-
+const specificationsRouter = require("./routes/Specification");
 const brandsRouter = require("./routes/Brands");
 const usersRouter = require("./routes/Users");
 const authRouter = require("./routes/Auth");
@@ -103,6 +103,7 @@ server.use("/auth", authRouter.router);
 server.use("/cart", isAuth(), cartRouter.router);
 server.use("/orders", isAuth(), ordersRouter.router);
 server.use("/subcategories", isAuth(), subcategoriesRouter.router);
+server.use("/specifications", isAuth(), specificationsRouter.router);
 
 // this line we add to make react router work in case of other routes doesnt match
 server.get("*", (req, res) =>

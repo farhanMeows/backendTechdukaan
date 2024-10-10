@@ -49,6 +49,14 @@ exports.fetchAllProducts = async (req, res) => {
       subcategory: { $in: req.query.subcategory.split(",") },
     });
   }
+  if (req.query.specification) {
+    query = query.find({
+      specification: { $in: req.query.specification.split(",") },
+    });
+    totalProductsQuery = totalProductsQuery.find({
+      specification: { $in: req.query.specification.split(",") },
+    });
+  }
   if (req.query._sort && req.query._order) {
     query = query.sort({ [req.query._sort]: req.query._order });
   }
