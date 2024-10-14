@@ -8,11 +8,11 @@ const productSchema = new Schema({
   price: {
     type: Number,
     min: [1, "wrong min price"],
-    max: [10000, "wrong max price"],
+    max: [10000000000, "wrong max price"],
   },
   discountPercentage: {
     type: Number,
-    min: [1, "wrong min discount"],
+    min: [0, "wrong min discount"],
     max: [99, "wrong max discount"],
   },
   rating: {
@@ -24,8 +24,9 @@ const productSchema = new Schema({
   stock: { type: Number, min: [0, "wrong min stock"], default: 0 },
   brand: { type: String, required: false },
   ram: { type: String, required: false },
+  processor: { type: String, required: false },
   category: { type: String, required: true },
-  subCategory: { type: String, required: false },
+  subcategory: { type: String, required: false },
   thumbnail: { type: String, required: true },
   images: { type: [String], required: true },
   colors: { type: [Schema.Types.Mixed] },
