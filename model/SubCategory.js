@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 // Subcategory schema
 const SubcategorySchema = new Schema({
-  label: { type: String, required: true, unique: true },
+  label: { type: String, required: true, unique: false },
   value: { type: String, required: true, unique: true },
 
   // Add a reference to the Category model

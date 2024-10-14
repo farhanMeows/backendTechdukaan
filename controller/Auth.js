@@ -70,29 +70,29 @@ exports.checkAuth = async (req, res) => {
 };
 
 exports.resetPasswordRequest = async (req, res) => {
-  const email = req.body.email;
-  const user = await User.findOne({ email: email });
-  if (user) {
+  try {
+    const email = req.body.email;
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      return res.status(400).json({ error: "User not found" });
+    }
+
     const token = crypto.randomBytes(48).toString("hex");
     user.resetPasswordToken = token;
     await user.save();
 
-    // Also set token in email
-    const resetPageLink =
-      "http://localhost:3000/reset-password?token=" + token + "&email=" + email;
-    const subject = "reset password for e-commerce";
-    const html = `<p>Click <a href='${resetPageLink}'>here</a> to Reset Password</p>`;
+    // Create reset link
+    const resetPageLink = `http://localhost:3000/reset-password?token=${token}&email=${email}`;
+    const subject = "Reset password for E-commerce";
+    const html = `<p>Click <a href="${resetPageLink}">here</a> to Reset Password</p>`;
 
-    // lets send email and a token in the mail body so we can verify that user has clicked right link
-
-    if (email) {
-      const response = await sendMail({ to: email, subject, html });
-      res.json(response);
-    } else {
-      res.sendStatus(400);
-    }
-  } else {
-    res.sendStatus(400);
+    // Send email
+    const response = await sendMail({ to: email, subject, html });
+    res.status(200).json({ message: "Reset email sent", response });
+  } catch (error) {
+    console.error("Error during password reset request:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 

@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const specificationSchema = new Schema({
+const processorSchema = new Schema({
   label: { type: String, required: true, unique: false },
   value: { type: String, required: true, unique: true },
-  // Add a reference to the Category model
   category: {
     type: Schema.Types.ObjectId,
     ref: "Category", // Reference to the Category model
@@ -12,11 +11,12 @@ const specificationSchema = new Schema({
   },
 });
 
-const virtual = specificationSchema.virtual("id");
+const virtual = processorSchema.virtual("id");
 virtual.get(function () {
   return this._id;
 });
-specificationSchema.set("toJSON", {
+
+processorSchema.set("toJSON", {
   virtuals: true,
   versionKey: false,
   transform: function (doc, ret) {
@@ -24,4 +24,4 @@ specificationSchema.set("toJSON", {
   },
 });
 
-exports.Specification = mongoose.model("Specification", specificationSchema);
+exports.Processor = mongoose.model("Processor", processorSchema);

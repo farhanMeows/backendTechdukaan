@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const brandSchema = new Schema({
-  label: { type: String, required: true, unique: true },
+  label: { type: String, required: true, unique: false },
   value: { type: String, required: true, unique: true },
   // Add a reference to the Category model
   category: {

@@ -40,6 +40,12 @@ exports.fetchAllProducts = async (req, res) => {
       brand: { $in: req.query.brand.split(",") },
     });
   }
+  if (req.query.ram) {
+    query = query.find({ ram: { $in: req.query.ram.split(",") } });
+    totalProductsQuery = totalProductsQuery.find({
+      ram: { $in: req.query.ram.split(",") },
+    });
+  }
   // Filter by subcategory
   if (req.query.subcategory) {
     query = query.find({

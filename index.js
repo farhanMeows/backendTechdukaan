@@ -17,6 +17,8 @@ const categoriesRouter = require("./routes/Categories");
 const subcategoriesRouter = require("./routes/SubCategory");
 const specificationsRouter = require("./routes/Specification");
 const brandsRouter = require("./routes/Brands");
+const ramsRouter = require("./routes/Ram");
+const processorsRouter = require("./routes/Processor");
 const usersRouter = require("./routes/Users");
 const authRouter = require("./routes/Auth");
 const cartRouter = require("./routes/Cart");
@@ -98,6 +100,8 @@ server.use("/products", isAuth(), productsRouter.router);
 server.use("/categories", isAuth(), categoriesRouter.router);
 
 server.use("/brands", isAuth(), brandsRouter.router);
+server.use("/ram", isAuth(), ramsRouter.router);
+server.use("/processors", isAuth(), processorsRouter.router);
 server.use("/users", isAuth(), usersRouter.router);
 server.use("/auth", authRouter.router);
 server.use("/cart", isAuth(), cartRouter.router);
