@@ -11,29 +11,42 @@ mongoose
   )
   .then(async () => {
     console.log("Connected to MongoDB");
-
+    const laptop = "67063d7fcb210608eb057f20";
+    const printer = "67063d7fcb210608eb057f21";
+    const accessories = "67063d7fcb210608eb057f22";
+    const pc = "67063d7fcb210608eb057f1f";
     // Dummy Subcategory Data
     const subcategories = [
       {
-        label: "Gaming PC",
-        value: "gaming-pc",
-        category: "67063d7fcb210608eb057f1f",
+        label: "Pre Built",
+        value: "Pre Built",
+        category: pc,
       }, // Replace with actual category ID
       {
-        label: "Workstation",
-        value: "workstation",
-        category: "67063d7fcb210608eb057f1f",
+        label: "Coustom Built",
+        value: "Coustom Built",
+        category: pc,
       },
-      {
-        label: "Ultrabook",
-        value: "ultrabook",
-        category: "67063d7fcb210608eb057f20",
-      },
-      {
-        label: "3D Printer",
-        value: "3d-printer",
-        category: "67063d7fcb210608eb057f20",
-      },
+      // {
+      //   label: "Gaming",
+      //   value: "Gaming",
+      //   category: laptop,
+      // },
+      // {
+      //   label: "KeyBoard",
+      //   value: "KeyBoard",
+      //   category: accessories,
+      // },
+      // {
+      //   label: "Mouse",
+      //   value: "Mouse",
+      //   category: accessories,
+      // },
+      // {
+      //   label: "HeadPhones",
+      //   value: "HeadPhones",
+      //   category: accessories,
+      // },
     ];
 
     // Insert Dummy Data
