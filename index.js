@@ -22,6 +22,7 @@ const processorsRouter = require("./routes/Processor");
 const usersRouter = require("./routes/Users");
 const authRouter = require("./routes/Auth");
 const cartRouter = require("./routes/Cart");
+const bannerRouter = require("./routes/Banner");
 const ordersRouter = require("./routes/Order");
 const { User } = require("./model/User");
 const { isAuth, sanitizeUser, cookieExtractor } = require("./services/common");
@@ -171,7 +172,7 @@ server.use("/cart", isAuth(), cartRouter.router);
 server.use("/orders", isAuth(), ordersRouter.router);
 server.use("/subcategories", isAuth(), subcategoriesRouter.router);
 server.use("/specifications", isAuth(), specificationsRouter.router);
-
+server.use("/banners", isAuth(), bannerRouter.router);
 // this line we add to make react router work in case of other routes doesnt match
 server.get("*", (req, res) =>
   res.sendFile(path.resolve("build", "index.html"))
