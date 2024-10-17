@@ -47,10 +47,10 @@ const MERCHANT_BASE_URL =
 const MERCHANT_STATUS_URL =
   "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status";
 
-const redirectUrl = "http://localhost:8080/status";
+const redirectUrl = "https://techdukaan.vercel.app/status";
 
-const successUrl = "http://localhost:3000/order-success";
-const failureUrl = "http://localhost:3000/order-failure";
+const successUrl = "https://techdukaan.vercel.app/order-success";
+const failureUrl = "https://techdukaan.vercel.app/order-failure";
 
 let OrderId = "";
 
