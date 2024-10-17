@@ -29,46 +29,109 @@ const path = require("path");
 const { Order } = require("./model/Order");
 const { env } = require("process");
 
-// Webhook
+const axios = require("axios");
 
-const endpointSecret = process.env.ENDPOINT_SECRET;
+const { v4: uuidv4 } = require("uuid");
 
-server.post(
-  "/webhook",
-  express.raw({ type: "application/json" }),
-  async (request, response) => {
-    const sig = request.headers["stripe-signature"];
+server.use(express.json());
+server.use(cors());
 
-    let event;
+const MERCHANT_KEY = "96434309-7796-489d-8924-ab56988a6076";
+const MERCHANT_ID = "PGTESTPAYUAT86";
 
-    try {
-      event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
-    } catch (err) {
-      response.status(400).send(`Webhook Error: ${err.message}`);
-      return;
-    }
+// const prod_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay"
+// const prod_URL = "https://api.phonepe.com/apis/hermes/pg/v1/status"
 
-    // Handle the event
-    switch (event.type) {
-      case "payment_intent.succeeded":
-        const paymentIntentSucceeded = event.data.object;
+const MERCHANT_BASE_URL =
+  "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
+const MERCHANT_STATUS_URL =
+  "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status";
 
-        const order = await Order.findById(
-          paymentIntentSucceeded.metadata.orderId
-        );
-        order.paymentStatus = "received";
-        await order.save();
+const redirectUrl = "http://localhost:8080/status";
 
-        break;
-      // ... handle other event types
-      default:
-        console.log(`Unhandled event type ${event.type}`);
-    }
+const successUrl = "http://localhost:3000/order-success";
+const failureUrl = "http://localhost:3000/order-failure";
 
-    // Return a 200 response to acknowledge receipt of the event
-    response.send();
+let OrderId = "";
+
+server.post("/create-payment-request", async (req, res) => {
+  const { orderId, totalAmount } = req.body;
+  OrderId = orderId;
+  //payment
+  const paymentPayload = {
+    merchantId: MERCHANT_ID,
+    amount: totalAmount * 100,
+    merchantTransactionId: orderId,
+    redirectUrl: `${redirectUrl}/?id=${orderId}`,
+    redirectMode: "POST",
+    paymentInstrument: {
+      type: "PAY_PAGE",
+    },
+  };
+
+  const payload = Buffer.from(JSON.stringify(paymentPayload)).toString(
+    "base64"
+  );
+  const keyIndex = 1;
+  const string = payload + "/pg/v1/pay" + MERCHANT_KEY;
+  const sha256 = crypto.createHash("sha256").update(string).digest("hex");
+  const checksum = sha256 + "###" + keyIndex;
+
+  const option = {
+    method: "POST",
+    url: MERCHANT_BASE_URL,
+    headers: {
+      accept: "application/json",
+      "Content-Type": "application/json",
+      "X-VERIFY": checksum,
+    },
+    data: {
+      request: payload,
+    },
+  };
+  try {
+    const response = await axios.request(option);
+    console.log(response.data.data.instrumentResponse.redirectInfo.url);
+    res.status(200).json({
+      msg: "OK",
+      url: response.data.data.instrumentResponse.redirectInfo.url,
+    });
+  } catch (error) {
+    console.log("error in payment", error);
+    res.status(500).json({ error: "Failed to initiate payment" });
   }
-);
+});
+
+server.post("/status", async (req, res) => {
+  const merchantTransactionId = req.query.id;
+
+  const keyIndex = 1;
+  const string =
+    `/pg/v1/status/${MERCHANT_ID}/${merchantTransactionId}` + MERCHANT_KEY;
+  const sha256 = crypto.createHash("sha256").update(string).digest("hex");
+  const checksum = sha256 + "###" + keyIndex;
+
+  const option = {
+    method: "GET",
+    url: `${MERCHANT_STATUS_URL}/${MERCHANT_ID}/${merchantTransactionId}`,
+    headers: {
+      accept: "application/json",
+      "Content-Type": "application/json",
+      "X-VERIFY": checksum,
+      "X-MERCHANT-ID": MERCHANT_ID,
+    },
+  };
+
+  axios.request(option).then((response) => {
+    if (response.data.success === true) {
+      console.log(OrderId);
+
+      return res.redirect(`${successUrl}/id=${OrderId}`);
+    } else {
+      return res.redirect(failureUrl);
+    }
+  });
+});
 
 // JWT options
 
@@ -183,31 +246,6 @@ passport.serializeUser(function (user, cb) {
 passport.deserializeUser(function (user, cb) {
   process.nextTick(function () {
     return cb(null, user);
-  });
-});
-
-// Payments
-
-// This is your test secret API key.
-const stripe = require("stripe")(process.env.STRIPE_SERVER_KEY);
-
-server.post("/create-payment-intent", async (req, res) => {
-  const { totalAmount, orderId } = req.body;
-
-  // Create a PaymentIntent with the order amount and currency
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: totalAmount * 100, // for decimal compensation
-    currency: "inr",
-    automatic_payment_methods: {
-      enabled: true,
-    },
-    metadata: {
-      orderId,
-    },
-  });
-
-  res.send({
-    clientSecret: paymentIntent.client_secret,
   });
 });
 
