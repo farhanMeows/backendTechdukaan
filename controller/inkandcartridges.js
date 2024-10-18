@@ -1,4 +1,4 @@
-const { Inkandcartridges } = require("../model/Inkandcartridges");
+const { Inkandcartridges } = require("../model/inkandcartridges");
 const mongoose = require("mongoose");
 const { isValidObjectId } = mongoose;
 
