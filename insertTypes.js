@@ -19,49 +19,29 @@ mongoose
     // Dummy Subcategory Data
     const types = [
       {
-        label: "Full HD",
-        value: "full-hd-monitor",
-        category: Monitor,
+        label: "Ink Tank Printer",
+        value: "InkTank-printer",
+        category: printer,
       },
       {
-        label: "OLED",
-        value: "oled-monitor",
-        category: Monitor,
+        label: "Laser Printer",
+        value: "laser-printer",
+        category: printer,
       },
       {
-        label: "4K",
-        value: "4k-monitor",
-        category: Monitor,
+        label: "Colour Printer",
+        value: "colour-printer",
+        category: printer,
       },
       {
-        label: "IPS",
-        value: "ips-monitor",
-        category: Monitor,
+        label: "Monochrome Printer",
+        value: "monochrome-printer",
+        category: printer,
       },
       {
-        label: "LED",
-        value: "led-monitor",
-        category: Monitor,
-      },
-      {
-        label: "LCD",
-        value: "lcd-monitor",
-        category: Monitor,
-      },
-      {
-        label: "Curved",
-        value: "curved-monitor",
-        category: Monitor,
-      },
-      {
-        label: "VA Pannel",
-        value: "va-monitor",
-        category: Monitor,
-      },
-      {
-        label: "TN Pannel",
-        value: "tn-monitor",
-        category: Monitor,
+        label: "Photo Printer",
+        value: "photo-printer",
+        category: printer,
       },
     ];
 
