@@ -8,11 +8,14 @@ const mongoURI =
 
 // Category ID to associate with the Rams
 const categoryId = "67063d7fcb210608eb057f21"; // Make sure this is correct
-
+const printer = "67063d7fcb210608eb057f21";
+const Monitor = "67125db890bb373a1c9d2562";
 // Dummy Ram Data with the specified category ID
 const brands = [
-  { label: "Canon", value: "Canon", category: categoryId },
-  { label: "Epson", value: "Epson", category: categoryId },
+  // { label: "Hp", value: "hp-printer", category: printer },
+  { label: "Cannon", value: "cannon-printer", category: printer },
+  { label: "Epson", value: "epson-printer", category: printer },
+
   //   { label: "16GB Ram", value: "16-gb", category: categoryId },
   //   { label: "32GB Ram", value: "32-gb", category: categoryId },
   //   { label: "64GB Ram", value: "64-gb", category: categoryId },

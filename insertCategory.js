@@ -14,10 +14,10 @@ mongoose
 
     // Dummy Brand Data
     const catorgy = [
-      { label: "PC", value: "PC" },
-      { label: "Laptop", value: "Laptop" },
-      { label: "Printers", value: "Printers" },
-      { label: "Accessories", value: "Accessories" },
+      { label: "Monitor", value: "Monitor" },
+      // { label: "Laptop", value: "Laptop" },
+      // { label: "Printers", value: "Printers" },
+      // { label: "Accessories", value: "Accessories" },
     ];
 
     // Insert Dummy Data

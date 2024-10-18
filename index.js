@@ -17,6 +17,12 @@ const categoriesRouter = require("./routes/Categories");
 const subcategoriesRouter = require("./routes/SubCategory");
 const specificationsRouter = require("./routes/Specification");
 const brandsRouter = require("./routes/Brands");
+const colourRouter = require("./routes/Colour");
+const graphicsRouter = require("./routes/Graphic");
+const inkandcartridgesRouter = require("./routes/inkandcartridges");
+const sizeRouter = require("./routes/Size");
+const storageRouter = require("./routes/Storage");
+const typesRouter = require("./routes/Type");
 const ramsRouter = require("./routes/Ram");
 const processorsRouter = require("./routes/Processor");
 const usersRouter = require("./routes/Users");
@@ -24,6 +30,7 @@ const authRouter = require("./routes/Auth");
 const cartRouter = require("./routes/Cart");
 const bannerRouter = require("./routes/Banner");
 const ordersRouter = require("./routes/Order");
+
 const { User } = require("./model/User");
 const { isAuth, sanitizeUser, cookieExtractor } = require("./services/common");
 const path = require("path");
@@ -33,7 +40,11 @@ const { env } = require("process");
 const axios = require("axios");
 
 const { v4: uuidv4 } = require("uuid");
+const EventEmitter = require("events");
+const emitter = new EventEmitter();
 
+// Increase the maximum number of listeners (e.g., to 20)
+emitter.setMaxListeners(20);
 server.use(express.json());
 server.use(cors());
 
@@ -173,6 +184,12 @@ server.use("/orders", isAuth(), ordersRouter.router);
 server.use("/subcategories", isAuth(), subcategoriesRouter.router);
 server.use("/specifications", isAuth(), specificationsRouter.router);
 server.use("/banners", isAuth(), bannerRouter.router);
+server.use("/colour", isAuth(), colourRouter.router);
+server.use("/graphics", isAuth(), graphicsRouter.router);
+server.use("/inkandcartridges", isAuth(), inkandcartridgesRouter.router);
+server.use("/size", isAuth(), sizeRouter.router);
+server.use("/storages", isAuth(), storageRouter.router);
+server.use("/types", isAuth(), typesRouter.router);
 // this line we add to make react router work in case of other routes doesnt match
 server.get("*", (req, res) =>
   res.sendFile(path.resolve("build", "index.html"))

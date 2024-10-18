@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { SubCategory } = require("./model/SubCategory"); // Adjust the path as necessary
+const { Size } = require("./model/Size"); // Adjust the path as necessary
 
 mongoose
   .connect(
@@ -17,35 +17,60 @@ mongoose
     const pc = "67063d7fcb210608eb057f1f";
     const Monitor = "67125db890bb373a1c9d2562";
     // Dummy Subcategory Data
-    const subcategories = [
+    const Sizes = [
       {
-        label: "Basic",
-        value: "Basic-monitor",
+        label: "15 Inch",
+        value: "15-monitor",
         category: Monitor,
       },
       {
-        label: "Entertainment",
-        value: "Entertainment-monitor",
+        label: "18 Inch",
+        value: "18-monitor",
         category: Monitor,
       },
       {
-        label: "Creativity",
-        value: "Creativity-monitor",
+        label: "20 Inch",
+        value: "20-monitor",
         category: Monitor,
       },
       {
-        label: "Gaming",
-        value: "Gaming-monitor",
+        label: "22 Inch",
+        value: "22-monitor",
+        category: Monitor,
+      },
+      {
+        label: "24 Inch",
+        value: "24-monitor",
+        category: Monitor,
+      },
+      {
+        label: "27 Inch",
+        value: "27-monitor",
+        category: Monitor,
+      },
+      {
+        label: "28 Inch",
+        value: "28-monitor",
+        category: Monitor,
+      },
+      {
+        label: "15 Inch ",
+        value: "32-monitor",
+        category: Monitor,
+      },
+      {
+        label: "32 Inch ",
+        value: "32-monitor",
         category: Monitor,
       },
     ];
 
     // Insert Dummy Data
     try {
-      await SubCategory.insertMany(subcategories);
-      console.log("Subcategories inserted successfully");
+      await Size.insertMany(Sizes);
+      console.log("Sizes inserted Sizes");
     } catch (error) {
-      console.error("Error inserting subcategories:", error);
+      console.error("Error inserting Sizes:", error);
     } finally {
       mongoose.connection.close();
     }

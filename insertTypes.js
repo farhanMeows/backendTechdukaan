@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { SubCategory } = require("./model/SubCategory"); // Adjust the path as necessary
+const { Type } = require("./model/Type"); // Adjust the path as necessary
 
 mongoose
   .connect(
@@ -17,35 +17,60 @@ mongoose
     const pc = "67063d7fcb210608eb057f1f";
     const Monitor = "67125db890bb373a1c9d2562";
     // Dummy Subcategory Data
-    const subcategories = [
+    const types = [
       {
-        label: "Basic",
-        value: "Basic-monitor",
+        label: "Full HD",
+        value: "full-hd-monitor",
         category: Monitor,
       },
       {
-        label: "Entertainment",
-        value: "Entertainment-monitor",
+        label: "OLED",
+        value: "oled-monitor",
         category: Monitor,
       },
       {
-        label: "Creativity",
-        value: "Creativity-monitor",
+        label: "4K",
+        value: "4k-monitor",
         category: Monitor,
       },
       {
-        label: "Gaming",
-        value: "Gaming-monitor",
+        label: "IPS",
+        value: "ips-monitor",
+        category: Monitor,
+      },
+      {
+        label: "LED",
+        value: "led-monitor",
+        category: Monitor,
+      },
+      {
+        label: "LCD",
+        value: "lcd-monitor",
+        category: Monitor,
+      },
+      {
+        label: "Curved",
+        value: "curved-monitor",
+        category: Monitor,
+      },
+      {
+        label: "VA Pannel",
+        value: "va-monitor",
+        category: Monitor,
+      },
+      {
+        label: "TN Pannel",
+        value: "tn-monitor",
         category: Monitor,
       },
     ];
 
     // Insert Dummy Data
     try {
-      await SubCategory.insertMany(subcategories);
-      console.log("Subcategories inserted successfully");
+      await Type.insertMany(types);
+      console.log("types inserted types");
     } catch (error) {
-      console.error("Error inserting subcategories:", error);
+      console.error("Error inserting types:", error);
     } finally {
       mongoose.connection.close();
     }
