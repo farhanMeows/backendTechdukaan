@@ -5,11 +5,13 @@ const { sendMail, invoiceTemplate } = require("../services/common");
 
 exports.fetchOrdersByUser = async (req, res) => {
   const { id } = req.user;
+
   try {
     const orders = await Order.find({ user: id });
 
-    res.status(200).json(orders);
+    res.status(200).json(orders); // This should return an array
   } catch (err) {
+    console.error("Error fetching orders:", err); // Log the error
     res.status(400).json(err);
   }
 };

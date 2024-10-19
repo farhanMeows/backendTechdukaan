@@ -10,15 +10,56 @@ const mongoURI =
 const categoryId = "67063d7fcb210608eb057f21"; // Make sure this is correct
 const printer = "67063d7fcb210608eb057f21";
 const Monitor = "67125db890bb373a1c9d2562";
+const laptop = "67063d7fcb210608eb057f20";
+const accessories = "67063d7fcb210608eb057f22";
+
 // Dummy Ram Data with the specified category ID
 const brands = [
-  // { label: "Hp", value: "hp-printer", category: printer },
-  { label: "Cannon", value: "cannon-printer", category: printer },
-  { label: "Epson", value: "epson-printer", category: printer },
-
-  //   { label: "16GB Ram", value: "16-gb", category: categoryId },
-  //   { label: "32GB Ram", value: "32-gb", category: categoryId },
-  //   { label: "64GB Ram", value: "64-gb", category: categoryId },
+  {
+    label: "ANT Esports",
+    value: "antEsport-accessories",
+    category: accessories,
+  },
+  {
+    label: "HP",
+    value: "hp-accessories",
+    category: accessories,
+  },
+  {
+    label: "ENTER",
+    value: "enter-accessories",
+    category: accessories,
+  },
+  {
+    label: "Dell",
+    value: "dell-accessories",
+    category: accessories,
+  },
+  {
+    label: "Lenovo",
+    value: "lenovo-accessories",
+    category: accessories,
+  },
+  {
+    label: "Logitech",
+    value: "logitech-accessories",
+    category: accessories,
+  },
+  {
+    label: "Razer",
+    value: "razer-accessories",
+    category: accessories,
+  },
+  {
+    label: "TVS",
+    value: "tvs-accessories",
+    category: accessories,
+  },
+  {
+    label: "Zebronic",
+    value: "zebronic-accessories",
+    category: accessories,
+  },
 ];
 
 // Connect to MongoDB and insert the Rams

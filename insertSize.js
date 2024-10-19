@@ -19,49 +19,29 @@ mongoose
     // Dummy Subcategory Data
     const Sizes = [
       {
-        label: "15 Inch",
-        value: "15-monitor",
-        category: Monitor,
+        label: "13.3 Inch",
+        value: "13.3-laptop",
+        category: laptop,
+      },
+      {
+        label: "14 Inch",
+        value: "14-laptop",
+        category: laptop,
+      },
+      {
+        label: "15.6 Inch",
+        value: "15.6-laptop",
+        category: laptop,
+      },
+      {
+        label: "16 Inch",
+        value: "16-laptop",
+        category: laptop,
       },
       {
         label: "18 Inch",
-        value: "18-monitor",
-        category: Monitor,
-      },
-      {
-        label: "20 Inch",
-        value: "20-monitor",
-        category: Monitor,
-      },
-      {
-        label: "22 Inch",
-        value: "22-monitor",
-        category: Monitor,
-      },
-      {
-        label: "24 Inch",
-        value: "24-monitor",
-        category: Monitor,
-      },
-      {
-        label: "27 Inch",
-        value: "27-monitor",
-        category: Monitor,
-      },
-      {
-        label: "28 Inch",
-        value: "28-monitor",
-        category: Monitor,
-      },
-      {
-        label: "15 Inch ",
-        value: "32-monitor",
-        category: Monitor,
-      },
-      {
-        label: "32 Inch ",
-        value: "32-monitor",
-        category: Monitor,
+        value: "18-laptop",
+        category: laptop,
       },
     ];
 

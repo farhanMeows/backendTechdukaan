@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Type } = require("./model/Type"); // Adjust the path as necessary
+const { Colour } = require("./model/Colour"); // Adjust the path as necessary
 
 mongoose
   .connect(
@@ -17,35 +17,40 @@ mongoose
     const pc = "67063d7fcb210608eb057f1f";
     const Monitor = "67125db890bb373a1c9d2562";
     // Dummy Subcategory Data
-    const types = [
+    const Colours = [
       {
-        label: "Basic",
-        value: "basic-accessories",
-        category: accessories,
+        label: "Black",
+        value: "black-laptop",
+        category: laptop,
       },
       {
-        label: "Combo",
-        value: "combo-accessories",
-        category: accessories,
+        label: "White",
+        value: "white-laptop",
+        category: laptop,
       },
       {
-        label: "Gaming Keyboard",
-        value: "gaming-keyboard-accessories",
-        category: accessories,
+        label: "Blue",
+        value: "blue-laptop",
+        category: laptop,
       },
       {
-        label: "Mechanical Gaming Keyboard",
-        value: "mechanical-gaming-keyboard-accessories",
-        category: accessories,
+        label: "Silver",
+        value: "silver-laptop",
+        category: laptop,
+      },
+      {
+        label: "Others",
+        value: "others-laptop",
+        category: laptop,
       },
     ];
 
     // Insert Dummy Data
     try {
-      await Type.insertMany(types);
-      console.log("types inserted types");
+      await Colour.insertMany(Colours);
+      console.log("Colour inserted Coloures");
     } catch (error) {
-      console.error("Error inserting types:", error);
+      console.error("Error inserting Colour:", error);
     } finally {
       mongoose.connection.close();
     }

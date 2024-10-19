@@ -19,24 +19,39 @@ mongoose
     // Dummy Subcategory Data
     const subcategories = [
       {
-        label: "Basic",
-        value: "Basic-monitor",
-        category: Monitor,
+        label: "DP Port - HDMI",
+        value: "dpPortHdmi-accessories",
+        category: accessories,
       },
       {
-        label: "Entertainment",
-        value: "Entertainment-monitor",
-        category: Monitor,
+        label: "HDMI - HDMI",
+        value: "hdmi-hdmi-accessories",
+        category: accessories,
       },
       {
-        label: "Creativity",
-        value: "Creativity-monitor",
-        category: Monitor,
+        label: "Type C - Type C",
+        value: "typeC-typeC-accessories",
+        category: accessories,
       },
       {
-        label: "Gaming",
-        value: "Gaming-monitor",
-        category: Monitor,
+        label: "USB - Lightning",
+        value: "usb-lightning-accessories",
+        category: accessories,
+      },
+      {
+        label: "USB - Printer Cable",
+        value: "usb-printer-cable-accessories",
+        category: accessories,
+      },
+      {
+        label: "USB - Type C",
+        value: "usb-typeC-accessories",
+        category: accessories,
+      },
+      {
+        label: "USB - USB",
+        value: "usb-usb-accessories",
+        category: accessories,
       },
     ];
 

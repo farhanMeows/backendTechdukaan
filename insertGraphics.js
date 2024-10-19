@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Type } = require("./model/Type"); // Adjust the path as necessary
+const { Graphic } = require("./model/Graphic"); // Adjust the path as necessary
 
 mongoose
   .connect(
@@ -17,35 +17,30 @@ mongoose
     const pc = "67063d7fcb210608eb057f1f";
     const Monitor = "67125db890bb373a1c9d2562";
     // Dummy Subcategory Data
-    const types = [
+    const Graphics = [
       {
-        label: "Basic",
-        value: "basic-accessories",
-        category: accessories,
+        label: "INTEL",
+        value: "intel-laptop",
+        category: laptop,
       },
       {
-        label: "Combo",
-        value: "combo-accessories",
-        category: accessories,
+        label: "AMD",
+        value: "amd-laptop",
+        category: laptop,
       },
       {
-        label: "Gaming Keyboard",
-        value: "gaming-keyboard-accessories",
-        category: accessories,
-      },
-      {
-        label: "Mechanical Gaming Keyboard",
-        value: "mechanical-gaming-keyboard-accessories",
-        category: accessories,
+        label: "NVIDIA",
+        value: "nvidia-laptop",
+        category: laptop,
       },
     ];
 
     // Insert Dummy Data
     try {
-      await Type.insertMany(types);
-      console.log("types inserted types");
+      await Graphic.insertMany(Graphics);
+      console.log("Graphic inserted Graphic");
     } catch (error) {
-      console.error("Error inserting types:", error);
+      console.error("Error inserting Graphic:", error);
     } finally {
       mongoose.connection.close();
     }
