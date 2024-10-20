@@ -19,38 +19,18 @@ mongoose
     // Dummy Subcategory Data
     const subcategories = [
       {
-        label: "DP Port - HDMI",
-        value: "dpPortHdmi-accessories",
+        label: "Storage",
+        value: "storage-accessories",
         category: accessories,
       },
       {
-        label: "HDMI - HDMI",
-        value: "hdmi-hdmi-accessories",
+        label: "Card Readers",
+        value: "card-readers-accessories",
         category: accessories,
       },
       {
-        label: "Type C - Type C",
-        value: "typeC-typeC-accessories",
-        category: accessories,
-      },
-      {
-        label: "USB - Lightning",
-        value: "usb-lightning-accessories",
-        category: accessories,
-      },
-      {
-        label: "USB - Printer Cable",
-        value: "usb-printer-cable-accessories",
-        category: accessories,
-      },
-      {
-        label: "USB - Type C",
-        value: "usb-typeC-accessories",
-        category: accessories,
-      },
-      {
-        label: "USB - USB",
-        value: "usb-usb-accessories",
+        label: "Memory Card",
+        value: "memory-card-accessories",
         category: accessories,
       },
     ];

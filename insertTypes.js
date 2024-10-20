@@ -16,27 +16,43 @@ mongoose
     const accessories = "67063d7fcb210608eb057f22";
     const pc = "67063d7fcb210608eb057f1f";
     const Monitor = "67125db890bb373a1c9d2562";
+    const cableConverters = "671547d6ca782f2879edd95e";
     // Dummy Subcategory Data
     const types = [
       {
-        label: "Basic",
-        value: "basic-accessories",
-        category: accessories,
+        label: "DP PORT - HDMI",
+        value: "dp-port-hdmi-accessories",
+        category: cableConverters,
       },
       {
-        label: "Combo",
-        value: "combo-accessories",
-        category: accessories,
+        label: "HDMI - HDMI",
+        value: "hdmi-hdmi-accessories",
+        category: cableConverters,
       },
       {
-        label: "Gaming Keyboard",
-        value: "gaming-keyboard-accessories",
-        category: accessories,
+        label: "TYPE C - TYPE C",
+        value: "type-c-type-c-accessories",
+        category: cableConverters,
       },
       {
-        label: "Mechanical Gaming Keyboard",
-        value: "mechanical-gaming-keyboard-accessories",
-        category: accessories,
+        label: "USB - LIGHTNING",
+        value: "usb-lightning-accessories",
+        category: cableConverters,
+      },
+      {
+        label: "USB - PRINTER CABLE",
+        value: "usb-printer-cable-accessories",
+        category: cableConverters,
+      },
+      {
+        label: "USB - TYPE C",
+        value: "usb-type-c-accessories",
+        category: cableConverters,
+      },
+      {
+        label: "USB - USB",
+        value: "usb-usb-accessories",
+        category: cableConverters,
       },
     ];
 
