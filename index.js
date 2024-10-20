@@ -45,7 +45,12 @@ const emitter = new EventEmitter();
 
 // Increase the maximum number of listeners (e.g., to 20)
 emitter.setMaxListeners(20);
-server.use(express.json());
+// Increase the limit for JSON payloads
+server.use(express.json({ limit: "10mb" })); // Adjust the size limit as needed
+
+// Increase the limit for URL-encoded payloads if needed
+server.use(express.urlencoded({ limit: "10mb", extended: true }));
+
 server.use(cors());
 
 const MERCHANT_KEY = "96434309-7796-489d-8924-ab56988a6076";
