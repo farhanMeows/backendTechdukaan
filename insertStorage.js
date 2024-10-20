@@ -9,20 +9,13 @@ const mongoURI =
 // Category ID to associate with the Rams
 const laptop = "67063d7fcb210608eb057f20";
 const accessories = "67063d7fcb210608eb057f22";
+const pc = "67063d7fcb210608eb057f1f";
 
 // Dummy Ram Data with the specified category ID
 const Storages = [
-  { label: "Pendrive", value: "pendrive-accessories", category: accessories },
-  { label: "Harddrive", value: "harddrive-accessories", category: accessories },
-  { label: "SSD", value: "ssd-accessories", category: accessories },
-  {
-    label: "Memory Card",
-    value: "memory-card-accessories",
-    category: accessories,
-  },
-  { label: "EMMC", value: "emmc-accessories", category: accessories },
-  { label: "SD Card", value: "sd-card-accessories", category: accessories },
-  { label: "Pro Duo", value: "pro-duo-accessories", category: accessories },
+  { label: "256 GB", value: "256gb-pc", category: pc },
+  { label: "500 GB", value: "500gb-pc", category: pc },
+  { label: "1 TB", value: "1tb-pc", category: pc },
 ];
 
 // Connect to MongoDB and insert the Rams

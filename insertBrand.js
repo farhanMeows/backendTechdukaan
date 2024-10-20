@@ -12,53 +12,54 @@ const printer = "67063d7fcb210608eb057f21";
 const Monitor = "67125db890bb373a1c9d2562";
 const laptop = "67063d7fcb210608eb057f20";
 const accessories = "67063d7fcb210608eb057f22";
-
+const pc = "67063d7fcb210608eb057f1f";
+const keyboardMouse = "67154bdb93d3c8f7e95d45c4";
 // Dummy Ram Data with the specified category ID
 const brands = [
   {
-    label: "ANT Esports",
-    value: "antEsport-accessories",
-    category: accessories,
+    label: "Acer",
+    value: "acer-pc",
+    category: pc,
   },
   {
-    label: "HP",
-    value: "hp-accessories",
-    category: accessories,
+    label: "Apple",
+    value: "apple-pc",
+    category: pc,
   },
   {
-    label: "ENTER",
-    value: "enter-accessories",
-    category: accessories,
+    label: "Asus",
+    value: "asus-pc",
+    category: pc,
   },
   {
     label: "Dell",
-    value: "dell-accessories",
-    category: accessories,
+    value: "dell-pc",
+    category: pc,
+  },
+  {
+    label: "HP",
+    value: "hp-pc",
+    category: pc,
+  },
+  {
+    label: "Foxin",
+    value: "foxin-pc",
+    category: pc,
   },
   {
     label: "Lenovo",
-    value: "lenovo-accessories",
-    category: accessories,
+    value: "lenovo-pc",
+    category: pc,
   },
   {
-    label: "Logitech",
-    value: "logitech-accessories",
-    category: accessories,
-  },
-  {
-    label: "Razer",
-    value: "razer-accessories",
-    category: accessories,
-  },
-  {
-    label: "TVS",
-    value: "tvs-accessories",
-    category: accessories,
+    label: "MSI",
+    value: "msi-pc",
+    category: pc,
   },
   {
     label: "Zebronic",
-    value: "zebronic-accessories",
-    category: accessories,
+    value: "zebronic-pc",
+    category: pc,
   },
 ];
 

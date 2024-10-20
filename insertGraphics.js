@@ -20,18 +20,18 @@ mongoose
     const Graphics = [
       {
         label: "INTEL",
-        value: "intel-laptop",
-        category: laptop,
+        value: "intel-pc",
+        category: pc,
       },
       {
         label: "AMD",
-        value: "amd-laptop",
-        category: laptop,
+        value: "amd-pc",
+        category: pc,
       },
       {
         label: "NVIDIA",
-        value: "nvidia-laptop",
-        category: laptop,
+        value: "nvidia-pc",
+        category: pc,
       },
     ];
 

@@ -19,19 +19,19 @@ mongoose
     // Dummy Subcategory Data
     const subcategories = [
       {
-        label: "Storage",
-        value: "storage-accessories",
-        category: accessories,
+        label: "All In One PC",
+        value: "all-in-one-pc",
+        category: pc,
       },
       {
-        label: "Card Readers",
-        value: "card-readers-accessories",
-        category: accessories,
+        label: "Mini PC",
+        value: "mini-pc",
+        category: pc,
       },
       {
-        label: "Memory Card",
-        value: "memory-card-accessories",
-        category: accessories,
+        label: "Tower PC",
+        value: "tower-pc",
+        category: pc,
       },
     ];
 

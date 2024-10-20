@@ -20,28 +20,28 @@ mongoose
     const Colours = [
       {
         label: "Black",
-        value: "black-laptop",
-        category: laptop,
+        value: "black-pc",
+        category: pc,
       },
       {
         label: "White",
-        value: "white-laptop",
-        category: laptop,
+        value: "white-pc",
+        category: pc,
       },
       {
         label: "Blue",
-        value: "blue-laptop",
-        category: laptop,
+        value: "blue-pc",
+        category: pc,
       },
       {
         label: "Silver",
-        value: "silver-laptop",
-        category: laptop,
+        value: "silver-pc",
+        category: pc,
       },
       {
         label: "Others",
-        value: "others-laptop",
-        category: laptop,
+        value: "others-pc",
+        category: pc,
       },
     ];
 

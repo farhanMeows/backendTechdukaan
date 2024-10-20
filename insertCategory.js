@@ -14,7 +14,7 @@ mongoose
 
     // Dummy Brand Data
     const catorgy = [
-      { label: "Cable and Converters", value: "Cable and Converters" },
+      { label: "Custom Build", value: "Custom Build" },
       // { label: "Laptop", value: "Laptop" },
       // { label: "Printers", value: "Printers" },
       // { label: "Accessories", value: "Accessories" },

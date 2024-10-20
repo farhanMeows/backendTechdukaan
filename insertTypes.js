@@ -17,42 +17,14 @@ mongoose
     const pc = "67063d7fcb210608eb057f1f";
     const Monitor = "67125db890bb373a1c9d2562";
     const cableConverters = "671547d6ca782f2879edd95e";
+    const keyboardMouse = "67154bdb93d3c8f7e95d45c4";
+
     // Dummy Subcategory Data
     const types = [
       {
-        label: "DP PORT - HDMI",
-        value: "dp-port-hdmi-accessories",
-        category: cableConverters,
-      },
-      {
-        label: "HDMI - HDMI",
-        value: "hdmi-hdmi-accessories",
-        category: cableConverters,
-      },
-      {
-        label: "TYPE C - TYPE C",
-        value: "type-c-type-c-accessories",
-        category: cableConverters,
-      },
-      {
-        label: "USB - LIGHTNING",
-        value: "usb-lightning-accessories",
-        category: cableConverters,
-      },
-      {
-        label: "USB - PRINTER CABLE",
-        value: "usb-printer-cable-accessories",
-        category: cableConverters,
-      },
-      {
-        label: "USB - TYPE C",
-        value: "usb-type-c-accessories",
-        category: cableConverters,
-      },
-      {
-        label: "USB - USB",
-        value: "usb-usb-accessories",
-        category: cableConverters,
+        label: "STUDENT/HOME",
+        value: "student/home-pc",
+        category: pc,
       },
     ];
 
