@@ -27,10 +27,17 @@ const productSchema = new Schema({
   processor: { type: String, required: false },
   category: { type: String, required: true },
   subcategory: { type: String, required: false },
+  colour: { type: String, required: false },
+  size: { type: String, required: false },
+  graphic: { type: String, required: false },
+  inkandcartridges: { type: String, required: false },
+  storage: { type: String, required: false },
+  type: { type: String, required: false },
+
   thumbnail: { type: String, required: true },
+
   images: { type: [String], required: true },
-  colors: { type: [Schema.Types.Mixed] },
-  sizes: { type: [Schema.Types.Mixed] },
+
   highlights: { type: [String] },
   discountPrice: { type: Number },
   deleted: { type: Boolean, default: false },

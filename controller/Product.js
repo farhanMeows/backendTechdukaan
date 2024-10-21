@@ -55,12 +55,52 @@ exports.fetchAllProducts = async (req, res) => {
       subcategory: { $in: req.query.subcategory.split(",") },
     });
   }
-  if (req.query.specification) {
+  if (req.query.colour) {
     query = query.find({
-      specification: { $in: req.query.specification.split(",") },
+      colour: { $in: req.query.colour.split(",") },
     });
     totalProductsQuery = totalProductsQuery.find({
-      specification: { $in: req.query.specification.split(",") },
+      colour: { $in: req.query.colour.split(",") },
+    });
+  }
+  if (req.query.size) {
+    query = query.find({
+      size: { $in: req.query.size.split(",") },
+    });
+    totalProductsQuery = totalProductsQuery.find({
+      size: { $in: req.query.size.split(",") },
+    });
+  }
+  if (req.query.graphic) {
+    query = query.find({
+      graphic: { $in: req.query.graphic.split(",") },
+    });
+    totalProductsQuery = totalProductsQuery.find({
+      graphic: { $in: req.query.graphic.split(",") },
+    });
+  }
+  if (req.query.inkandcartridges) {
+    query = query.find({
+      inkandcartridges: { $in: req.query.inkandcartridges.split(",") },
+    });
+    totalProductsQuery = totalProductsQuery.find({
+      inkandcartridges: { $in: req.query.inkandcartridges.split(",") },
+    });
+  }
+  if (req.query.storage) {
+    query = query.find({
+      storage: { $in: req.query.storage.split(",") },
+    });
+    totalProductsQuery = totalProductsQuery.find({
+      storage: { $in: req.query.storage.split(",") },
+    });
+  }
+  if (req.query.type) {
+    query = query.find({
+      type: { $in: req.query.type.split(",") },
+    });
+    totalProductsQuery = totalProductsQuery.find({
+      type: { $in: req.query.type.split(",") },
     });
   }
   if (req.query._sort && req.query._order) {
@@ -107,6 +147,36 @@ exports.updateProduct = async (req, res) => {
     );
     const updatedProduct = await product.save();
     res.status(200).json(updatedProduct);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
+
+exports.searchProducts = async (req, res) => {
+  try {
+    const { q } = req.query;
+    let condition = {};
+
+    if (q) {
+      // Perform a case-insensitive search using regex on multiple fields
+      const searchQuery = { $regex: q, $options: "i" };
+      condition = {
+        $or: [
+          { title: searchQuery },
+          { description: searchQuery },
+          { brand: searchQuery },
+          { category: searchQuery },
+          { subcategory: searchQuery },
+          { type: searchQuery },
+        ],
+      };
+    }
+
+    const query = Product.find(condition);
+
+    // You can add pagination and sorting here as needed
+    const products = await query.exec();
+    res.status(200).json(products);
   } catch (err) {
     res.status(400).json(err);
   }
