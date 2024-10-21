@@ -83,7 +83,7 @@ exports.resetPasswordRequest = async (req, res) => {
     await user.save();
 
     // Create reset link
-    const resetPageLink = `http://localhost:3000/reset-password?token=${token}&email=${email}`;
+    const resetPageLink = `https://techdukaan.vercel.app/reset-password?token=${token}&email=${email}`;
     const subject = "Reset password for E-commerce";
     const html = `<p>Click <a href="${resetPageLink}">here</a> to Reset Password</p>`;
 
